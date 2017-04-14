@@ -53,7 +53,7 @@ def get_tasks():
     return jsonify( { 'tasks': list(map(make_public_task, tasks)) } )
 
 @app.route('/todo/api/v1.0/tasks/<int:task_id>', methods = ['GET'])
-@auth.login_required
+#@auth.login_required
 def get_task(task_id):
     task = [task for task in tasks if task['id'] == task_id]
     if len(task) == 0:
