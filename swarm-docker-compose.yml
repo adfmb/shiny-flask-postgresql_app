@@ -8,9 +8,7 @@ services:
         - "8080:8080"
 
    api:
-     build:
-       context: ./docker-shiny
-       dockerfile: Dockerfile
+     image: localhost:5000/sfpapp_api2:v0.1
      env_file: .env
      ports:
         - "3838:3838"
