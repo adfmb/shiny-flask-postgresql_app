@@ -2,17 +2,16 @@ version: "3"
 
 services:     
    backend:
-      image: localhost:5000/sfpapp_backend:v0.1
+     image: jalf/tasks05
      env_file: .env
      ports:
         - "8080:8080"
 
    api:
-      image: localhost:5000/sfpapp_api:v0.1
+     image: jalf/sf02
      env_file: .env
      ports:
         - "3838:3838"
-     #env_file: .env
 
 networks:
   dpa-prueba01:
