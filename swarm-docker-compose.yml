@@ -6,13 +6,17 @@ services:
      env_file: .env
      ports:
         - "8080:8080"
+     networks:
+        - dpap1
 
    api:
      image: localhost:5000/sfpapp_api3:v0.1
      env_file: .env
      ports:
         - "3838:3838"
+     networks:
+        - dpap1
 
 networks:
-  dpa-prueba01:
+  dpap1:
     external: true
