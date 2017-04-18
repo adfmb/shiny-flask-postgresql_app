@@ -5,7 +5,7 @@ services:
      image: jalf/tasks05
      env_file: .env
      ports:
-        - "3838:8080"
+        - "8080:8080"
 
    api:
      image: jalf/sf02
