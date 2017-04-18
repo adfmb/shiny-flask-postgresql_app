@@ -11,7 +11,7 @@ services:
      image: jalf/sf02
      env_file: .env
      ports:
-        - "3838:8080"
+        - "8080:8080"
 
 networks:
   dpa-prueba01:
