@@ -9,7 +9,7 @@ services:
       ports:
         - "8080:8080"
 
-   api4:
+   api5:
       build:
         context: ./docker-shiny
         dockerfile: Dockerfile
