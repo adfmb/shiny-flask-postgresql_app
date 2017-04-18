@@ -5,13 +5,13 @@ services:
      image: jalf/tasks05
      env_file: .env
      ports:
-        - "8080:8080"
+        - "3838:8080"
 
    api:
      image: jalf/sf02
      env_file: .env
      ports:
-        - "8080:3838"
+        - "3838:3838"
 
 networks:
   dpa-prueba01:
