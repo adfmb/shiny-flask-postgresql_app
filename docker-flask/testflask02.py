@@ -1,7 +1,9 @@
+import os
+import json
 from flask import Flask, jsonify, abort, request, make_response, url_for
 from flask_httpauth import HTTPBasicAuth
 
-app = Flask(__name__, static_url_path = "")
+app = Flask(__name__)
 auth = HTTPBasicAuth()
 
 @auth.get_password
@@ -100,7 +102,8 @@ def delete_task(task_id):
     if len(task) == 0:
         abort(404)
     tasks.remove(task[0])
-    return jsonify( { 'result': True } )
-    
-if __name__ == '__main__':
-    app.run(debug = True)
+    return jsonify({ 'result': True })
+
+if __name__ == "__main__":
+    port = int(os.environ.get("API_PORT", 8080))
+    app.run(host="0.0.0.0", port = port)

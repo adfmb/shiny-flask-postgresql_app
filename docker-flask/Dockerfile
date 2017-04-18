@@ -2,7 +2,7 @@ FROM python:3.5-slim
 
 MAINTAINER Alfredo Méndez <actuario.alfredo.mb@gmail.com>
 
-ENV REFRESHED_AT 2017-02-14
+ENV REFRESHED_AT 2017-04-14
 
 ## Actualizamos
 RUN \
@@ -31,9 +31,10 @@ ADD requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt
 
 ## Copiamos nuestro hola mundo
-ADD testflask01.py /tmp/testflask01.py
+ADD testflask02.py /tmp/testflask02.py
 
+ENV API_PORT 8080
 
 EXPOSE 8080
 
-CMD [ "python", "/tmp/testflask01.py" ]
+CMD [ "python", "/tmp/testflask02.py" ]
