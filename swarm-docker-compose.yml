@@ -15,5 +15,5 @@ services:
      #env_file: .env
 
 networks:
-  dpa:
+  dpa-prueba01:
     external: true
