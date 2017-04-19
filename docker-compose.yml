@@ -9,11 +9,10 @@ services:
       ports:
         - "8080:8080"
 
-   api9:
+   api:
       build:
         context: ./docker-shiny
         dockerfile: Dockerfile
       env_file: .env
       ports:
         - "3838:3838"
-     #env_file: .env

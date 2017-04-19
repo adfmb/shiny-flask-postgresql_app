@@ -29,7 +29,7 @@ shinyServer(function(input, output) {
 
   tbl_completa00<-reactive({
     
-    path<-"http://34.208.60.59:8080/todo/api/v1.0/tasks"
+    path<-"http://backend:8080/todo/api/v1.0/tasks"
     # x<-GET(flask_port(),path=path)
     x<-GET(path)
     fromJSON(x$url)
@@ -42,7 +42,7 @@ shinyServer(function(input, output) {
     
     i<-1
     # path<-paste("todo/api/v1.0/tasks/",i,sep="")
-    path<-paste("http://34.208.60.59:8080/todo/api/v1.0/tasks/",i,sep="")
+    path<-paste("http://backend:8080/todo/api/v1.0/tasks/",i,sep="")
     # x<-GET(flask_port(),path=path)
     x<-GET(path)
     fromJSON(x$url)

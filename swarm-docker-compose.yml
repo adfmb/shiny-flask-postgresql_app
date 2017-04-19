@@ -2,7 +2,7 @@ version: "3"
 
 services:     
    backend:
-     image: jalf/tasks05
+     image: localhost:5000/sfpapp_tasks:v0.1 #jalf/tasks05
      env_file: .env
      ports:
         - "8080:8080"
@@ -10,7 +10,7 @@ services:
         - dpap1
 
    api:
-     image: localhost:5000/sfpapp_api9:v0.1
+     image: localhost:5000/sfpapp_api:v0.1
      env_file: .env
      ports:
         - "3838:3838"
