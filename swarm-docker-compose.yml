@@ -2,7 +2,7 @@ version: "3"
 
 services:     
    backend:
-     image: localhost:5000/sfpapp_tasks:v0.1 #jalf/tasks05
+     image: localhost:5000/sfpapp_backend:v0.1 #jalf/tasks05
      env_file: .env
      ports:
         - "8080:8080"
