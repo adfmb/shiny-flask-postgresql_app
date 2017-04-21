@@ -104,6 +104,24 @@ def delete_task(task_id):
     tasks.remove(task[0])
     return jsonify({ 'result': True })
 
+@app.route('/', methods = ['GET'])                                                  
+def query():                                                                             
+    # connect to an existing database                         
+    conn=psycopg2.connect("dbname=postgres user=postgres")                                    
+    # open a cursor to perform database operations                                  
+    cur=conn.cursor()                                                                    
+    # execute command 
+    cur.execute("SELECT * FROM iris;")
+    columns = (
+        'sepal_length','sepal_width','petal_length','petal_width','class'
+    )
+    results = []
+    for row in cur.fetchall():
+        results.append(dict(zip(columns, row)))
+
+    return json.dumps(results, indent=2)
+
+
 if __name__ == "__main__":
     port = int(os.environ.get("API_PORT", 8080))
     app.run(host="0.0.0.0", port = port)

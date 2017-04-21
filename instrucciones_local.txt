@@ -1,0 +1,64 @@
+#Instala docker
+https://www.docker.com/
+
+#Instala docker compose
+sudo curl -L \
+>  https://github.com/docker/compose/releases/download/1.10.0/docker-compose-$(uname -s)-$(uname -m) \
+> -o /usr/local/bin/docker-compose
+
+chmod +x /usr/local/bin/docker-compose
+
+
+#Instala docker machine
+
+curl -L https://github.com/docker/machine/releases/download/v0.9.0/docker-machine-`uname -s`-`uname -m` \
+> > /usr/local/bin/docker-machine && \
+> chmod +x /usr/local/bin/docker-machine
+
+
+
+# Crea las maquinas
+
+export MACHINE_DRIVER=virtualbox
+
+for N in $(seq 1 5); do
+docker-machine create dpa-node$N
+done
+
+
+#conectar al lider
+docker-machine ssh dpa-node1
+
+
+
+
+
+#iniciar swarm indicando ip ya que tenia multiples interfaces
+docker swarm init --advertise-addr 192.168.99.100
+
+# imprime esto, ahora hay que ejecutarlo en los demás nodos
+for N in $(seq 3 5); do
+  eval $(docker-machine env dpa-node$N)
+  docker swarm join \
+      --token SWMTKN-1-5yboxedpanw49d6g3f67o75h58noq37c9boinpylf3dnk9hnrh-8rw8zl6l7d1qs5d4uqttlc431 \
+      192.168.99.107:2377
+done
+eval $(docker-machine env dpa-node1)
+
+
+
+for N in $(seq 2 5); do 
+	eval $(docker-machine env dpa-node$N)
+	docker swarm join \
+    --token SWMTKN-1-5cb8880qv2d1lbl3nnhzwaij4e4zeyc65e340megy3mp5sustl-3eugbw73jphw07ci9tbv6txle \
+    192.168.99.100:2377
+done
+eval $(docker-machine env dpa-node1)
+
+
+
+psql -h 192.168.99.107 -U postgres
+
+csvsql -i postgresql industry_data_clean.csv
+
+
