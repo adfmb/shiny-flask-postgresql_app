@@ -3,6 +3,8 @@ import json
 from flask import Flask, jsonify, abort, request, make_response, url_for
 from flask_httpauth import HTTPBasicAuth
 
+import psycopg2
+
 app = Flask(__name__)
 auth = HTTPBasicAuth()
 
@@ -105,9 +107,10 @@ def delete_task(task_id):
     return jsonify({ 'result': True })
 
 @app.route('/', methods = ['GET'])                                                  
+#@auth.login_required
 def query():                                                                             
     # connect to an existing database                         
-    conn=psycopg2.connect("dbname=postgres user=postgres")                                    
+    conn=psycopg2.connect("host=192.168.99.100 port=5432 dbname=postgres user=postgres password=postgres")                                    
     # open a cursor to perform database operations                                  
     cur=conn.cursor()                                                                    
     # execute command 
