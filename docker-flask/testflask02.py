@@ -5,6 +5,7 @@ from flask_httpauth import HTTPBasicAuth
 
 import psycopg2
 
+hostname = "bd"
 app = Flask(__name__)
 auth = HTTPBasicAuth()
 
@@ -110,19 +111,25 @@ def delete_task(task_id):
 #@auth.login_required
 def query():                                                                             
     # connect to an existing database                         
-    conn=psycopg2.connect("host=192.168.99.100 port=5432 dbname=postgres user=postgres password=postgres")                                    
+
+    # conn=psycopg2.connect("host=192.168.99.100 port=5432 dbname=dpa user=postgres")                                    
+    conn=psycopg2.connect("host={} port=5432 dbname=dpa user=postgres password=postgres".format(hostname))                                    
     # open a cursor to perform database operations                                  
     cur=conn.cursor()                                                                    
     # execute command 
-    cur.execute("SELECT * FROM iris;")
-    columns = (
-        'sepal_length','sepal_width','petal_length','petal_width','class'
-    )
-    results = []
-    for row in cur.fetchall():
-        results.append(dict(zip(columns, row)))
+    ## cur.execute("SELECT * FROM iris;")
+    #columns = (
+    #    'sepal_length','sepal_width','petal_length','petal_width','class'
+    #)
+    #results = []
+    #for row in cur.fetchall():
+    #    results.append(dict(zip(columns, row)))
 
-    return json.dumps(results, indent=2)
+    cur.execute('select array_agg(row_to_json(iris)) from iris;')
+    res=cur.fetchall()
+    return json.dumps(res[0][0], indent=2)
+
+    ## return json.dumps(results, indent=2)
 
 
 if __name__ == "__main__":

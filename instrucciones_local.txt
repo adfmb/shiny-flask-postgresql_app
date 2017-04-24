@@ -3,8 +3,8 @@ https://www.docker.com/
 
 #Instala docker compose
 sudo curl -L \
->  https://github.com/docker/compose/releases/download/1.10.0/docker-compose-$(uname -s)-$(uname -m) \
-> -o /usr/local/bin/docker-compose
+https://github.com/docker/compose/releases/download/1.10.0/docker-compose-$(uname -s)-$(uname -m) \
+-o /usr/local/bin/docker-compose
 
 chmod +x /usr/local/bin/docker-compose
 
@@ -50,15 +50,21 @@ eval $(docker-machine env dpa-node1)
 for N in $(seq 2 5); do 
 	eval $(docker-machine env dpa-node$N)
 	docker swarm join \
-    --token SWMTKN-1-5cb8880qv2d1lbl3nnhzwaij4e4zeyc65e340megy3mp5sustl-3eugbw73jphw07ci9tbv6txle \
+    --token SWMTKN-1-10y13gc91v5f0xg3n1spf3vjqhydhkqybklqw3eo7m2at62fqy-bxa0f8cmjy7putibj94oubhxf \
     192.168.99.100:2377
 done
 eval $(docker-machine env dpa-node1)
 
 
 
-psql -h 192.168.99.107 -U postgres
+## desde servidor remoto ejecutar:
+csvsql --db postgresql://upostgres:ppostgres@ip-node1:5432/postgres --insert iris.csv
+
 
 csvsql -i postgresql industry_data_clean.csv
+
+# obtener iris de UCI
+# convertir csv a sql statement con http://www.convertcsv.com/csv-to-sql.htm
+
 
 
