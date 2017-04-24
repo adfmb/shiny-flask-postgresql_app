@@ -1,4 +1,4 @@
 Flask
 flask_httpauth
-#psycopg2
+psycopg2
 #py2neo

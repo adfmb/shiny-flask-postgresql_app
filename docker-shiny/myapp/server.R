@@ -9,27 +9,14 @@ library(shiny)
 library(jsonlite)
 library(httr)
 
-# flask_port<-function(){
-#   
-#   #"http://127.0.0.1:5000/"
-#   # "http://172.19.0.3/16/"
-#   # "http://172.19.0.2/16/"
-#   # "http://172.19.0.2/16:5000"
-#   # "http://172.19.0.2:5000/"
-#   # "http://172.19.0.2/16:8080/"
-#   "http://34.208.60.59:8080/"
-#   # "http://34.210.20.88:8080/"
-#   
-# }
-
-
 
 # Define server logic for random distribution application
 shinyServer(function(input, output) {
 
   tbl_completa00<-reactive({
     
-    path<-"http://backend:8080/todo/api/v1.0/tasks"
+    # path<-"http://backend:8080/todo/api/v1.0/tasks"
+    path<-"http://backend:8080/"
     # x<-GET(flask_port(),path=path)
     x<-GET(path)
     fromJSON(x$url)
@@ -41,7 +28,8 @@ shinyServer(function(input, output) {
   renglon_i00<-reactive({
     
     i<-1
-    # path<-paste("todo/api/v1.0/tasks/",i,sep="")
+
+    #path<-paste("http://backend:8080/todo/api/v1.0/tasks/",i,sep="")
     path<-paste("http://backend:8080/todo/api/v1.0/tasks/",i,sep="")
     # x<-GET(flask_port(),path=path)
     x<-GET(path)

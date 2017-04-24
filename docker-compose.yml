@@ -1,6 +1,14 @@
 version: "3"
 
-services:     
+services:  
+   bd:
+      build:
+        context: ./docker-postgres
+        dockerfile: Dockerfile
+      env_file: .env
+      ports:
+        - "5432:5432"
+
    backend:
       build:
         context: ./docker-flask
