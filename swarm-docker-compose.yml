@@ -2,7 +2,7 @@ version: "3"
 
 services: 
    bd:
-     image: localhost:5000/sfpapp_bd:1.0 #jalf/tasks05
+     image: localhost:5000/shinyflaskpostgresqlapp_bd:1.0 #jalf/tasks05
      env_file: .env
      ports:
         - "5432:5432"
@@ -10,7 +10,7 @@ services:
         - dpap1
 
    backend:
-     image: localhost:5000/sfpapp_backend:1.0 #jalf/tasks05
+     image: localhost:5000/shinyflaskpostgresqlapp_backend:1.0 #jalf/tasks05
      env_file: .env
      ports:
         - "8080:8080"
@@ -18,7 +18,7 @@ services:
         - dpap1
 
    api:
-     image: localhost:5000/sfpapp_api:1.0
+     image: localhost:5000/shinyflaskpostgresqlapp_api:1.0
      env_file: .env
      ports:
         - "3838:3838"

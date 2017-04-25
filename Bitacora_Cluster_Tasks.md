@@ -29,7 +29,7 @@ Dado que éste no es un caso de Producción oficial, por practicidad ejecutamos 
 
 # Clonar el repositorio
     
-    git clone https://github.com/adfmb/sfp_app.git
+    git clone https://github.com/adfmb/shiny-flask-postgresql_app.git
 
 Cambiar el **_env** por **.env**
 
@@ -84,17 +84,23 @@ Lo anterior lo copiaremos y pegaremos en los demás nodos (uno en nuestro caso) 
 
 ## Construyendo imágenes y colocándolas en localhost
 
+### bd
+
+    docker-compose build bd
+    docker tag shinyflaskpostgresqlapp_bd localhost:5000/shinyflaskpostgresqlapp_bd:v0.1
+    docker push localhost:5000/shinyflaskpostgresqlapp_bd
+
 ### api
 
     docker-compose build api
-    docker tag sfpapp_api localhost:5000/sfpapp_api:v0.1
-    docker push localhost:5000/sfpapp_api
+    docker tag shinyflaskpostgresqlapp_api localhost:5000/shinyflaskpostgresqlapp_api:v0.1
+    docker push localhost:5000/shinyflaskpostgresqlapp_api
 
 ### backend
 
     docker-compose build backend
-    docker tag sfpapp_backend localhost:5000/sfpapp_backend:v0.1
-    docker push localhost:5000/sfpapp_backend
+    docker tag shinyflaskpostgresqlapp_backend localhost:5000/shinyflaskpostgresqlapp_backend:v0.1
+    docker push localhost:5000/shinyflaskpostgresqlapp_backend
 
 curl localhost:5000/v2/_catalog
 
