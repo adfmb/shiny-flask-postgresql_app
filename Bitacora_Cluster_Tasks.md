@@ -63,7 +63,7 @@ Lo anterior lo copiaremos y pegaremos en los demás nodos (uno en nuestro caso) 
 
 # Agregar nodo al clúster
 
-**Ahora en otra ventana desde la máquina local, nos conectamos a la otra máquina:**
+**Ahora en otra ventana desde la máquina local, nos conectamos a las otras máquinas: awsn2 y awsn3:**
     
     docker-machine ssh awsn2
 
@@ -73,8 +73,24 @@ Lo anterior lo copiaremos y pegaremos en los demás nodos (uno en nuestro caso) 
     --token <poner-token> \
     <poner-ip>
 
+    logout
+
+
+   docker-machine ssh awsn3
+
+**En la máquina 3 (con su respectivo token e ip):**
+
+        docker swarm join \
+    --token <poner-token> \
+    <poner-ip>
+
+    logout
+
+    
 # Haciendo accesible las imágenes para los nodos
 **Ahora de regreso en la máquina Líder:**
+    
+    docker-machine ssh awsn1
     
     docker node ls
 

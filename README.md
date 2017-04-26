@@ -15,7 +15,7 @@ Ejecutar desde la máquina local:
     export AWS_ACCESS_KEY_ID=
     export AWS_SECRET_ACCESS_KEY=
     export AWS_DEFAULT_REGION=us-west-2
-    for N in $(seq 1 2); do
+    for N in $(seq 1 3); do
     docker-machine create awsn$N                            
     docker-machine ssh awsn$N sudo usermod -aG docker ubuntu
     done              
@@ -69,7 +69,7 @@ Lo anterior lo copiaremos y pegaremos en los demás nodos (uno en nuestro caso) 
 
 # Agregar nodo al clúster
 
-**Ahora en otra ventana desde la máquina local, nos conectamos a la otra máquina:**
+**Ahora en otra ventana desde la máquina local, nos conectamos a las otras máquinas: awsn2 y awsn3:**
     
     docker-machine ssh awsn2
 
@@ -79,8 +79,24 @@ Lo anterior lo copiaremos y pegaremos en los demás nodos (uno en nuestro caso) 
     --token <poner-token> \
     <poner-ip>
 
+    logout
+
+
+   docker-machine ssh awsn3
+
+**En la máquina 3 (con su respectivo token e ip):**
+
+        docker swarm join \
+    --token <poner-token> \
+    <poner-ip>
+
+    logout
+
+    
 # Haciendo accesible las imágenes para los nodos
 **Ahora de regreso en la máquina Líder:**
+    
+    docker-machine ssh awsn1
     
     docker node ls
 
