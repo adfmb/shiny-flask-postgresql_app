@@ -89,7 +89,7 @@ Lo anterior lo copiaremos y pegaremos en los demás nodos (uno en nuestro caso) 
     docker-compose build bd
     docker tag shinyflaskpostgresqlapp_bd localhost:5000/shinyflaskpostgresqlapp_bd:v0.1
     docker push localhost:5000/shinyflaskpostgresqlapp_bd
-
+    
 ### api
 
     docker-compose build api
