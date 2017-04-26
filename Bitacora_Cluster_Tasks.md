@@ -31,7 +31,7 @@ Dado que éste no es un caso de Producción oficial, por practicidad ejecutamos 
     
     git clone https://github.com/adfmb/shiny-flask-postgresql_app.git
 
-Cambiar el **_env** por **.env**
+Cambiar el **_env** por **.env** y establecer usuario y contraseña.
 
 
 # Instalando docker-compose
