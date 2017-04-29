@@ -76,7 +76,7 @@ Lo anterior lo copiaremos y pegaremos en los demás nodos (uno en nuestro caso) 
     logout
 
 
-   docker-machine ssh awsn3
+    docker-machine ssh awsn3
 
 **En la máquina 3 (con su respectivo token e ip):**
 
@@ -105,7 +105,7 @@ Lo anterior lo copiaremos y pegaremos en los demás nodos (uno en nuestro caso) 
     docker-compose build bd
     docker tag shinyflaskpostgresqlapp_bd localhost:5000/shinyflaskpostgresqlapp_bd:v0.1
     docker push localhost:5000/shinyflaskpostgresqlapp_bd
-    
+
 ### api
 
     docker-compose build api

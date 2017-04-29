@@ -82,7 +82,7 @@ Lo anterior lo copiaremos y pegaremos en los demás nodos (uno en nuestro caso) 
     logout
 
 
-   docker-machine ssh awsn3
+    docker-machine ssh awsn3
 
 **En la máquina 3 (con su respectivo token e ip):**
 
@@ -97,7 +97,7 @@ Lo anterior lo copiaremos y pegaremos en los demás nodos (uno en nuestro caso) 
 **Ahora de regreso en la máquina Líder:**
     
     docker-machine ssh awsn1
-    
+
     docker node ls
 
 ## Creamos el servicio que nos permitirá guardar las imágenes en el *localhost:5000*
