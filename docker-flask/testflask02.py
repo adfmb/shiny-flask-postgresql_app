@@ -2,7 +2,6 @@ import os
 import json
 from flask import Flask, jsonify, abort, request, make_response, url_for
 from flask_httpauth import HTTPBasicAuth
-
 import psycopg2
 
 hostname = "bd"

@@ -17,26 +17,28 @@ shinyServer(function(input, output) {
     
     # path<-"http://backend:8080/todo/api/v1.0/tasks"
     path<-"http://backend:8080/"
+    # path<-"http://localhost:5000/busquedas"
     # x<-GET(flask_port(),path=path)
     x<-GET(path)
+    # paste("'",fromJSON(x$url),"'",sep="")
     fromJSON(x$url)
-    
+  
   })
   
   output$tbl_completa<-renderTable({tbl_completa00()})
 
-  renglon_i00<-reactive({
-    
-    i<-1
-
-    #path<-paste("http://backend:8080/todo/api/v1.0/tasks/",i,sep="")
-    path<-paste("http://backend:8080/todo/api/v1.0/tasks/",i,sep="")
-    # x<-GET(flask_port(),path=path)
-    x<-GET(path)
-    fromJSON(x$url)
-    
-  })
+  # renglon_i00<-reactive({
+  #   
+  #   i<-1
+  # 
+  #   #path<-paste("http://backend:8080/todo/api/v1.0/tasks/",i,sep="")
+  #   path<-paste("http://backend:8080/todo/api/v1.0/tasks/",i,sep="")
+  #   # x<-GET(flask_port(),path=path)
+  #   x<-GET(path)
+  #   fromJSON(x$url)
+  #   
+  # })
   
-  output$renglon_i<-renderTable({renglon_i00()})
+  # output$renglon_i<-renderTable({renglon_i00()})
   
 })

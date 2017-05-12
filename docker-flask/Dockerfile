@@ -31,7 +31,7 @@ ADD requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt
 
 ## Copiamos nuestro hola mundo
-ADD testflask02.py /tmp/testflask02.py
+ADD testflask02.py /tmp/testflask02.py 
 
 ENV API_PORT 8080
 
